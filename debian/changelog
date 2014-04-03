@@ -1,0 +1,137 @@
+dvbcut (0.5.4+svn178-2) unstable; urgency=low
+
+  * Team upload.
+
+  [ Fabrice Coutadeur ]
+  * Adapt package to use debhelper tiny form:
+    + debian/rules:
+      - use debhelper tiny form
+      - Adapt dh_auto_configure target for automake build system
+      - Delete generated files in override_dh_auto_clean to be able to build
+        dvbcut locally twice
+    + debian/dvbcut.menu: rename menu file to dvbcut.menu to makes it
+      automatically installable by debhelper
+    + debian/dvbcut.install: rename install file to dvbcut.install as stated in
+      the debhelper manpage and Manually installs files to avoid the local
+      update of the mime database
+  * Change back build system to autotools so that qt4 patch can be adopted
+    upstream (Closes: #656793).
+    + debian/control:
+      - Drop scons build dependency. It's not used anymore.
+      - Drop cmake dependency
+      - Added b-d on autoconf to generate configure script
+      - Added b-d on pkg-config, used to get qt4 libs and includes
+    + port-to-qt4.patch:
+      - Drop cmake files from qt4 patch
+      - Update configure and src/Makefile.in for qt4
+    + This allows the automatic installation of desktop file and icon 
+      (Closes: #660009)
+  * Refresh fix-ftbfs-libav0.7 patch to use -pab as quilt arg. This makes futur
+    refreshes lighter.
+  * Rename docs to dvbcut.docs and manpages to dvbcut.manpages to follow
+    debhelper recommendations. thanks bojo42 for the tip.
+  * fix_gcc_4.7.patch: fix FTBFS with gcc 4.7 because of missing include.
+    (Closes: #667154)
+
+  [ Alessio Treglia ]
+  * Add patch to fix "Unable to open stream" error. (LP: #875030)
+  * Update debian/copyright to copyright format 1.0.
+  * Bump Standards.
+
+ -- Alessio Treglia <alessio@debian.org>  Tue, 24 Apr 2012 12:54:45 +0200
+
+dvbcut (0.5.4+svn178-1) unstable; urgency=low
+
+  [ Fabrice Coutadeur ]
+  * Imported Upstream version 0.5.4+svn178.
+    - Drop fix-ftbfs-gcc4.6 patch as it has been integrated upstream
+    - Refresh port-to-qt4 patch
+  * Update port-to-qt4 patch to make dvbcut usable in wheeezy (Closes: #641992,
+    LP: #896811). Thanks Jindrich Makovicka for the patch!
+  * port-to-qt4.patch: updated to get rid of file: prefix in the index filename
+  * debian/rules: updated to add build-indep and build-arch recommended targets.
+    This fixes a lintian warning.
+
+  [ Reinhard Tartler ]
+  * remove traces of the included source copy of ffmpeg
+  * make buildlogs more verbose
+  * Use distro-wide provided standard compiler flags
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 21 Jan 2012 08:45:41 +0100
+
+
+dvbcut (0.5.4+svn170-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Reinhard Tartler <siretart@tauware.de>  Fri, 02 Sep 2011 11:22:19 +0200
+
+dvbcut (0.5.4+svn170-1) experimental; urgency=low
+
+  * New upstream version
+  * Drop patches that are already applied in this upstream version
+  * Apply patch from upstream to support qt4
+  * Build against qt4
+  * Add patch to build against Libav 0.7, Closes: #632415
+    Thanks to Fabrice Coutadeur <fabricesp@ubuntu.com>
+  * Tighten build dependencies to build against Libav 0.7
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 02 Jul 2011 10:59:23 +0200
+
+dvbcut (0.5.4+svn146-2) unstable; urgency=low
+
+  * Team upload.
+  * Add patch to fix build failure with GCC4.5 (Closes: #622079).
+  * Take patch from upstream's SVN trunk to prevent build failures
+    with GCC4.6.
+  * Add gbp config file.
+  * debian/control:
+    - Correct team's name.
+    - Bump Standards.
+
+ -- Alessio Treglia <alessio@debian.org>  Thu, 05 May 2011 14:26:49 +0200
+
+dvbcut (0.5.4+svn146-1) unstable; urgency=low
+
+  * Package dvbcut for debian. Closes: #457272
+  * Add homepage field
+  * Add watch file
+  * Bump standards version, no changes needed
+  * Bump debhelper compat level to 7
+  * Add libswscale-dev to build depends
+  * Use Source Format 3.0 (quilt)
+  * Fix FTBFS with gcc-4.4
+  * update config.sub and config.guess
+
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 23 Feb 2011 11:53:19 +0100
+
+dvbcut (0.5.4+r146-0ubuntu1~ppa) intrepid; urgency=low
+
+  * First ubuntu version (SVN - revision 146)
+
+ -- Fabrice Coutadeur <coutadeurf@gmail.com>  Tue, 13 Jan 2009 22:13:06 +0100
+
+dvbcut (0.5.4) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Sven Over <svenover@svenover.de>  Fri, 13 Apr 2007 19:43:07 +0100
+
+dvbcut (0.5.3) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Sven Over <svenover@svenover.de>  Fri, 16 Dec 2005 20:15:12 +0100
+
+dvbcut (0.5.2) unstable; urgency=low
+
+  * New upstream version.
+  * Downgraded libao-dev build-dependency to work on sarge.
+
+ -- Sven Over <svenover@svenover.de>  Sun, 11 Dec 2005 13:00:12 +0100
+
+dvbcut (0.5.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Sven Over <svenover@svenover.de>  Sun, 27 Nov 2005 17:26:15 +0100

@@ -1,0 +1,41 @@
+Source: dvbcut
+Section: graphics
+Priority: optional
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Uploaders:
+ Reinhard Tartler <siretart@tauware.de>,
+ Fabrice Coutadeur <coutadeurf@gmail.com>
+Build-Depends:
+ autoconf,
+ autotools-dev,
+ debhelper (>= 7.0.50~),
+ liba52-0.7.4-dev,
+ libao-dev,
+ libavcodec-dev (>> 4:0.7~),
+ libavformat-dev (>> 4:0.7~),
+ libavutil-dev (>> 4:0.7~),
+ libmad0-dev,
+ libpostproc-dev (>> 4:0.7~),
+ libqt4-dev,
+ libswscale-dev (>> 4:0.7~),
+ pkg-config,
+ qt4-dev-tools
+Vcs-Git: git://git.debian.org/git/pkg-multimedia/dvbcut.git
+Vcs-Browser: http://git.debian.org/?p=pkg-multimedia/dvbcut.git;a=summary
+Homepage: http://dvbcut.sourceforge.net/
+Standards-Version: 3.9.3
+
+Package: dvbcut
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Recommends:
+ mplayer
+Description: Qt application for cutting parts out of DVB streams
+ DVBcut is a Qt application that allows you to select certain parts of an
+ MPEG transport stream (as received via Digital Video Broadcasting, DVB) and
+ save these parts into a single MPEG output file. It follows a `keyhole
+ surgery'' approach where the input video and audio data is mostly kept
+ unchanged, and only very few frames at the beginning and/or end of the
+ selected range are re-encoded in order to obtain a valid MPEG file.

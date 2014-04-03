@@ -1,0 +1,1201 @@
+2011-04-29  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/playaudio.cpp:
+		Fix segfault with libao >= 1.0.
+
+2011-04-25  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/mpgfile.cpp:
+	* src/tsfile.h:
+	* src/tsfile.cpp:
+		Handle TS packet sizes other than 188.
+	* VERSION:
+		Bump up to 0.6.2-alpha.
+
+2011-04-24  David Timms  <dtimms@iinet.net.au>  (mr)
+
+	* src/progresswindow.cpp:
+		Dual-function cancel/close button.
+
+2011-04-24  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* makefile.in:
+	* src/Makefile.in:
+		Add datarootdir variable.
+
+2011-04-22  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Remove `const'.
+
+2011-04-22  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/settings.cpp:
+		Add .m2t extension.
+
+2010-05-26  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/main.cpp:
+	* src/mpgfile.h:
+		Replace `index::index' with `class index' to make
+		gcc 4.5 happy.
+
+2010-03-06  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* DISTFILES:
+		Add dvbcut.ico.
+	* dvbcut.ico:
+		Converted icon for Windows.
+
+2010-02-25  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* DISTFILES:
+		Add dvbcut.svg.
+	* dvbcut.svg:
+		Icon contributed by Franmcesco Fumanti.
+	* makefile.in:
+		Install icon.
+
+2010-02-24  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* DISTFILES:
+		Add new files.
+	* dvbcut.desktop.in:
+		Add desktop file template.
+	* dvbcut.xml:
+		Add mime type declaration for application/x-dvbcut.
+	* makefile.in:
+		Install new files.
+	* configure.in:
+		Create dvbcut.desktop from dvbcut.desktop.in.
+
+2009-06-28  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* makefile.in:
+		Fix stamp-dist dependencies.
+		Fix non-POSIX sort command.
+		Add bindist target.
+
+2009-06-27  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/dvbcutbase.ui:
+		Add help dialog and about box.
+	* src/dvbcut_en.html:
+		Initial (rudimentary) help file.
+	* DISTFILES:
+		Add dvbcut_en.html.
+	* src/Makefile.in:
+		Install dvbcut_en.html.
+
+2009-06-27  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/stream.h:
+		Make non-interlaced video the default.
+
+2009-06-27  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* makefile.in:
+		Allow parallel (make -j<n>) install.
+
+2009-06-26  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* import/stdlib.h:
+		Use #include_next <stdlib.h> instead of a fixed path.
+		
+2009-06-23  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+	* src/mpegmuxer.cpp:
+		Fix gcc 4.4 build.
+
+2009-06-19  Dominik Kopp  <my@kabelfunk.de>  (mr)
+
+	* contrib/AR_to_169:
+	* contrib/AR_to_43:
+		Add missing quotes.
+
+2009-06-09  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* contrib:
+		New directory
+	* contrib/AR_to_169:
+	* contrib/AR_to_43:
+		New scripts to force an aspect ratio of 16:9 or
+		4:3. Contributed by Dominik Kopp.
+	* DISTFILES:
+		Add new files to distribution list.
+
+2009-02-11  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.in:
+		Generate all sources before calling setversion.sh.
+ 
+2009-01-28  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* configure.in:
+		Also link with -lm when looking for liba52.
+
+2009-01-24  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* VERSION:
+		Bump up to 0.6.0.
+
+	* README:
+		Edit for release.
+
+	* INSTALL:
+		Remove references to scons.
+
+	* Makefile:
+		Tell people to run configure instead of scons.
+
+	* SConstruct:
+	* SConscript.ffmpeg:
+	* src/SConscript:
+		Remove.
+
+	* DISTFILES:
+		Remove SConstruct, SConscript.ffmpeg and src/SConscript.
+
+	* configure.in:
+		Pass configure args to Makefiles.
+
+	* makefile.in:
+		Generate new version.h for tarball.
+		Pass configure args to "make check-dist".
+ 
+2009-01-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.in:
+		Delegate version.h creation to toplevel makefile.
+	* makefile.in:
+		Add target to create src/version.h.
+	* DISTFILES:
+		Add missing files.
+
+2009-01-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* DISTFILES:
+		New file.
+
+	* makefile.in:
+		Add distfiles, dist and check-dist targets.
+
+	* src/Makefile.in:
+		Add distfiles target.
+
+2009-01-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* INSTALL:
+	* makefile.in:
+		Add and document `dep' target.
+
+2009-01-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/stream.h:
+		Fix "impossible bitrate constraints" error
+		from external ffmpeg.
+
+2009-01-11  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/dvbcutbase.ui:
+		Add Zoom in/out function.
+
+2009-01-10  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcut.cpp:
+		Handle left/right key events.
+		Make mouse wheel work in video window.
+
+2009-01-08  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+        * src/settings.cpp:
+                Fixed bug with output pipe directory/file names
+                containing spaces (added quotes).
+
+        * src/dvbcutbase.ui:
+        * src/dvbcut.cpp:
+        * src/dvbcut.h:
+        * src/avframe.cpp:
+        * src/avframe.h:
+        * src/imageprovider.cpp:
+        * src/imageprovider.h:
+        * src/differenceimageprovider.cpp:
+        * src/differenceimageprovider.h:
+        * src/settings.cpp:
+        * src/settings.h:
+                viewscalefactor can now be any positive float,  
+                and implemented "Custem size" viewing scale.
+
+2009-01-07  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* configure.in:
+		Add --with-qt3-include and --with-qt3-lib options.
+
+	* makefile.in:
+	* src/Makefile.in:
+		Use $(DESTDIR).
+ 
+2009-01-07  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* INSTALL:
+		Updated dependencies and build instructions.
+
+2008-10-31  Wolfram Gloger  <video06@malloc.de>  (mr)
+
+	* src/lavfmuxer.cpp:
+		Use avcodec_decode_audio2 with newer ffmpeg.
+
+	* src/avframe.cpp:
+		Replace img_copy with av_picture_copy for newer ffmpeg.
+
+	* configure.in:
+		Add -I.../include/qt3 to CPPFLAGS.
+
+2008-10-26  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/index.cpp:
+		Fix writing of new index format.
+
+2008-10-19  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+		Fix Windows build.
+
+2008-10-19  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+		Fix Ubuntu compilation error.
+
+2008-10-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/index.cpp:
+		Disable generation of new index format for now.
+
+2008-10-10  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcutbase.ui:
+	* src/dvbcut.cpp:
+	* src/index.cpp:
+	* src/index.h:
+	* src/mpgfile.h:
+		Show picture related infos (slightly changed index format!)
+ 
+2008-10-10  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/mpegmuxer.h:
+	* src/mpegmuxer.cpp:
+		Return false if writing fails.
+
+2008-06-14  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* configure.in:
+		Improve ffmpeg/libswscale handling.
+ 
+2008-06-14  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* configure.in:
+	* install-sh:
+	* makefile.in:
+	* mkinstalldirs:
+	* src/Makefile.in:
+		New files.
+
+2008-05-18  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/main.cpp:
+		Use size_t instead of unsigned int.
+
+2008-03-31  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Fix Windows build (patch by Ralph Glasstetter).
+
+2008-03-24  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* SConstruct:
+	* src/avframe.h:
+	* src/lavfmuxer.cpp:
+	* src/lavfmuxer.h:
+	* src/main.cpp:
+	* src/stream.h:
+	* src/streamdata.h:
+		Yet another ffmpeg interface change.
+
+2008-03-23  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/psfile.cpp:
+		Add missing #include <cassert> (thanks, Wolfram).
+
+2008-03-23  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/psfile.cpp:
+		Mark audio streams in first pass, renumber in second.
+
+2008-03-21  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+	* src/dvbcut.cpp:
+		Windows compile fixes.
+		
+2008-03-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/tsfile.cpp:
+		Accept 0x80 as legacy video descriptor tag.
+
+2008-03-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Add hack for filenames with colons in them.
+
+2008-03-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* SConstruct:
+		Always define __STDC_CONSTANT_MACROS and __STDC_LIMIT_MACROS.
+
+	* src/buffer.cpp:
+		Remove obsolete definition of __STDC_LIMIT_MACROS.
+
+	* src/mpgfile.cpp:
+	* src/psfile.cpp:
+	* src/tsfile.cpp:
+		Avoid stupid compiler warnings.
+
+2008-02-17  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcut.cpp:
+		Always add a trailing slash to directory names.
+
+2008-02-15  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/main.cpp:
+		Add "-voracious" option for people who have several
+		gigabytes of cache and want dvbcut to use all of it.
+
+2008-02-15  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/settings.cpp:
+		Added "versioned" config file and format adaption.
+
+2008-02-10  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcut.cpp:
+	* src/settings.cpp:
+	* src/settings.h:
+		Fixed bug with 'lastdir' & toplevel directories 
+		under Windows and implemented possibility to use 
+		a fixed 'lastdir'.
+		Added *.trp to recognized files.
+
+2008-02-04  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* SConstruct:
+		Install manpages to $PREFIX/share/man.
+
+	* src/dvbcut.cpp:
+	* src/tsfile.cpp:
+		#include <algorithm>.
+
+2008-01-16  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/psfile.cpp:
+		Speed up PS probing.
+
+2008-01-06  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcutbase.ui:
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/settings.cpp:
+	* src/settings.h:
+		Automated setting of equidistant chapter markers.
+		Fixed bug concerning positioning via output frames.
+
+2007-12-12  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcutbase.ui:
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/main.cpp:
+		Added 4:3 & 16:9 bookmark conversion to GUI & CLI.
+		Additional -cut & -automarker CLI switches.
+
+2007-12-08  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcut.cpp:
+		Added format option to <expfile>-tag of project files.
+		Fixed a chapterlist bug.
+
+	* src/settings.cpp:
+		Empty defaults for pipe settings.
+				
+2007-12-06  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+  
+	* src/settings.cpp:
+	* src/settings.h:
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+		New recent files format which allows for storing
+		multiple input files.
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/main.cpp:
+		Input file names can come before CLI switches.
+		New -format switch.
+
+2007-12-06  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/settings.cpp:
+	* src/settings.h:
+		New pipe command settings.
+
+	* src/dvbcut.cpp:
+		Improved pipe command.
+ 
+2007-12-06  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcutbase.ui:
+		Use zero margin.
+
+2007-11-28  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/lavfmuxer.cpp:
+		Compatibility patch for libavformat >= 52.0.0
+		(contributed by Alexis Ballier).
+
+2007-11-28  Wolfram Gloger  <video06@malloc.de>  (mr)
+
+	* src/dvbcut.cpp:
+	* src/mpegmuxer.cpp:
+		Allow output to a pipe.
+
+	* src/port.h:
+		Include <sys/wait.h> on Unix/Linux.
+ 
+2007-11-26  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcutbase.ui:
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/settings.cpp:
+	* src/settings.h:
+		Configurable snapshot parameters and chapter snapshots.
+
+2007-11-24  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/tsfile.cpp:
+	* src/tsfile.h:
+		Import bookmarks from new Topfield TF7700HDPVR.
+
+	* src/mpgfile.cpp:
+	* src/mpgfile.h:
+		readfile() to read (small) files to memory.
+
+	* src/buffer.cpp:
+	* src/buffer.h:
+		Store filename in files structure.
+		
+2007-11-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/lavfmuxer.cpp:
+		Fix by Wolfram Gloger.
+
+2007-11-03  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/tsfile.cpp:
+		Detect legacy audio stream types.
+
+2007-10-30  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+		New quick_picture_lookup_table (also used for export)!
+		
+2007-10-30  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcut.cpp:
+	* src/settings.cpp:
+	* src/settings.h:
+		Automatically add missing start/stop markers at BOF/EOF, 
+		configurable via "start_bof"/"stop_eof" in settings file.
+
+	* src/main.cpp:
+		Improved checking of cut list.
+
+2007-10-29  Ralph Glasstetter  <ralph.glasstetter@web.de>  (mr)
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/main.cpp:
+	* src/dvbcutbase.ui:
+		Allow timestamps in input fields, added -exp option. 
+		-exp/-cut/-idx options overrule project file defaults.
+		Add specific "Delete"-entries to marker context menu. 
+		Fixed bugs with quick_picture_lookuptable.
+
+	* src/pts.cpp:
+	* src/pts.h:
+		Function to convert formatted timestamps to pts_t.
+
+2007-10-25  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* SConstruct:
+		Search for libintl and <libintl.h>.
+
+	* src/Makefile.w32:
+	* src/SConscript:
+		Add gettext.{cpp,h}.
+ 
+	* src/dvbcutbase.ui:
+	* src/exportdialogbase.ui:
+	* src/mplayererrorbase.ui:
+	* src/progresswindowbase.ui:
+		Make uic include "gettext.h".
+
+	* src/gettext.cpp:
+	* src/gettext.h:
+		New files providing hooks for gettext().
+
+	* src/main.cpp:
+		Add i18n framework.
+
+2007-10-25  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/main.cpp:
+		Add missing newlines.
+
+	* src/dvbcut.cpp:
+		Display '*' marker for exported pictures.
+
+2007-10-25  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/dvbcutbase.ui:
+	* src/eventlistitem.h:
+	* src/main.cpp:
+		Add bookmark conversion and the -cut option
+		(patches by Ralph Glasstetter).
+
+2007-10-22  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Display a message when setting markers failed.
+
+	* src/mpgfile.h:
+	* src/tsfile.cpp:
+	* src/tsfile.h:
+		Let getbookmarks() return a std::vector
+		(patches by Ralph Glasstetter).
+
+2007-10-22  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/dvbcutbase.ui:
+	* src/index.h:
+	* src/mpgfile.h:
+	* src/tsfile.cpp:
+	* src/tsfile.h:
+		Import bookmarks from Topfield receivers (code by Ralph Glasstetter).
+
+2007-10-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Remove picture type on the right.
+
+2007-10-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+	* src/dvbcutbase.ui:
+		New layout for the label/input area.
+
+2007-10-13  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Build dvbcut with -g and place a stripped copy in bin.
+
+2007-10-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/settings.cpp:
+	* src/settings.h:
+		Do not load settings until they are needed.
+
+	* src/dvbcut.cpp:
+	* src/eventlistitem.cpp:
+		Use new settings interface.
+ 
+2007-10-11  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcutbase.ui:
+		Add/change accelerators.
+
+2007-10-10  Michael Kreuzer  <michael-kreuzer@gmx.de>  (mr)
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+	* src/dvbcutbase.ui:
+		Add "save snapshot" function to file menu and toolbar
+
+2007-10-08  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Use multi-line labels.
+
+2007-10-07  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+		Add "suggest markers" function based on aspect ratio changes.
+
+	* src/dvbcutbase.ui:
+		Add "suggest markers" to edit menu.
+
+	* src/mpgfile.h:
+		Add aspect discontinuity finder function.
+
+2007-10-07  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/index.cpp:
+		Never write the (binary) index to a terminal.
+
+2007-10-07  Sven Over  <svenover@svenover.de>
+
+	* src/dvbcut.h:
+	* src/dvbcut.cpp:
+	* src/eventlistitem.h:
+		Display output timecode and picture number.
+
+	* src/dvbcut.cpp:
+		Evaluate 'expfile' tag or attribute.
+
+2007-10-05  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+	* src/buffer.h:
+		Implement "pipe mode" for reading from non-regular files.
+
+	* src/index.cpp:
+	* src/index.h:
+		Add separate function for saving to stdout.
+
+	* src/main.cpp:
+		Allow -generateidx to read from stdin again.
+
+2007-09-30  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/defines.h:
+		Move default values to src/settings.cpp.
+
+	* src/eventlistitem.cpp:
+		Use label strings from the configuration file.
+ 
+	* src/settings.cpp:
+	* src/settings.h:
+		Add label strings to the configuration file.
+
+2007-09-29  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/eventlistitem.cpp:
+		Use light gray background for STOP items.
+
+2007-09-27  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Add delete all/others function to event list
+		(patch by Ralph Glasstetter).
+
+2007-09-13  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Really fix project file encoding this time.
+
+2007-09-07  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Always use UTF-8 encoding for project file.
+		Add a proper XML declaration at the beginning.
+
+2007-09-06  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/main.cpp:
+		Locale patch by Michael Kreuzer.
+
+2007-08-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/mpegmuxer.cpp:
+		Prepare for DTS audio.
+
+	* src/psfile.cpp:
+		Improved stream detection (including DTS and subtitle hooks).
+
+2007-08-15  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/tsfile.cpp:
+		Improved SI table parser and stream detection.
+
+2007-08-10  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/tsfile.cpp:
+		Also detect teletext and subtitle streams. We may
+		not be able to use them, but it's good to know that
+		they're there.
+
+2007-08-03  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/tsfile.h:
+	* src/tsfile.cpp:
+		Add SI table parser.
+
+2007-08-02  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* SConstruct:
+		Check for libswscale.
+
+	* src/avframe.h:
+	* src/avframe.cpp:
+		Use libswscale if present (patch by Michael Kreuzer).
+
+	* src/Makefile.w32:
+		Also scan Makefile.w32 for id keyword.
+
+2007-07-30  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Set svn:keywords property.
+
+2007-07-28  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Fix "versioned" build on Windows.
+
+2007-07-28  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* SConstruct:
+	* src/avframe.h:
+	* src/lavfmuxer.cpp:
+	* src/lavfmuxer.h:
+	* src/main.cpp:
+	* src/mpgfile.cpp:
+	* src/mpgfile.h:
+	* src/psfile.cpp:
+	* src/stream.h:
+	* src/tsfile.cpp:
+		Ffmpeg interface cleanup patch by Wolfram Gloger.
+
+2007-07-28  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* VERSION:
+	* setversion.sh:
+		New files.
+
+	* src/SConscript:
+	* src/Makefile.w32:
+		Generate version.h.
+
+	* src/dvbcut.cpp:
+		Include version string in caption.
+
+2007-07-23  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Reset inbuffer only if there are new input files.
+
+2007-07-11  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Add explicit dependencies for moc and uil files.
+
+	* numerous other files:
+		Add "Id" keyword.
+
+2007-07-10  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Write to log instead of stderr.
+		Redirect log to stderr if there is no GUI.
+
+	* src/logoutput.cpp:
+		Simplify code, avoid memory allocations.
+		Don't prefix each line with a progress indicator.
+ 
+	* src/mpgfile.cpp:
+		Write to log instead of stderr.
+ 
+	* src/progresswindow.cpp:
+		Let print("") insert a line break.
+
+2007-07-09  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp:
+		Export all frames in batch mode if there isn't a project file
+		(patch by Ralph Glasstetter).
+
+	* src/main.cpp:
+		Allow multiple filenames in batch mode.
+
+2007-07-07  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Add copyright and license text.
+
+2007-07-06  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Fix generation of required files.
+
+2007-07-06  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+	* src/buffer.h:
+		Use posix_fadvise in sequential mode.
+
+	* src/main.cpp:
+		Use sequential mode when indexing.
+
+	* src/dvbcut.cpp:
+		Use sequential mode when indexing or exporting.
+
+2007-07-05  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		Use -Wall.
+		Only remove ffmpeg install directories when distcleaning.
+
+	* src/buffer.cpp:
+		Disable mmap() on Windows.
+
+	* mingw.sh:
+		Use src/Makefile.w32 for everything.
+
+2007-07-05  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/Makefile.w32:
+		New file.
+
+	* mingw.sh:
+		Set svn:executable property.
+		Use src/Makefile.w32.
+
+2007-07-05  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	Added svn:keyword property for all files except src/*.ui
+	(I don't want to confuse Qt designer).
+
+2007-07-04  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+		Use _lseeki64 on Windows.
+		Only seek if necessary.
+		Try to read a buffer full of data.
+
+	* src/dvbcut.cpp:
+		Remember last used load directory for Open.
+ 
+	* src/settings.cpp:
+	* src/settings.h:
+		Add "lastdir" setting.
+
+2007-07-03  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+		Use fstat/_fstati64 to obtain the file size. This is
+		required to overcome the 2 GB limit on 32-bit systems
+		(Windows in particular).
+
+	* src/defines.h:
+		Better defaults for multi-file mode.
+
+2007-07-02  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp:
+	* src/buffer.h:
+	* src/dvbcut.cpp:
+		"play multiple files" patch by Ralph Glasstetter.
+
+2007-06-30  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp (class inbuffer):
+	* src/buffer.h (class inbuffer):
+		Support multiple input files.
+
+	* src/dvbcut.cpp:
+	* src/dvbcut.h:
+		Open multiple input files.
+		Read & write new project file format.
+		Factor out pathname canonicalization.
+
+	* src/main.cpp:
+		Open multiple input files.
+
+	* src/mpgfile.cpp:
+		Use number of frames for bitrate estimation.
+
+2007-06-29  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/buffer.cpp (class inbuffer):
+	* src/buffer.h (class inbuffer):
+		Let open() return bool.
+		Remove copy constructor for inbuffer.
+		Add reset() member for inbuffer reuse.
+ 
+	* src/dvbcut.h:
+	* src/dvbcut.cpp:
+		Add reusable inbuffer member to class dvbcut.
+		Pass inbuffer to mpgfile::open().
+ 
+	* src/main.cpp:
+		Centralize option handling.
+		Pass inbuffer to mpgfile::open().
+ 
+	* src/mpgfile.h:
+	* src/mpgfile.cpp:
+		Create mpgfile from inbuffer, not from filename.
+		Use a reference to a single inbuffer.
+
+2007-06-27  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/mpgfile.cpp:
+	* src/mpgfile.h:
+	* src/psfile.cpp:
+	* src/psfile.h:
+	* src/tsfile.cpp:
+	* src/tsfile.h:
+	  Do not pass a filename to class mpgfile and its derivatives.
+	  Once we support multi-file sources, a filename makes no sense
+	  any longer.  We should instead pass the entire group of files
+	  via a multi-file source class (e.g. a modified inbuffer).
+
+2007-06-19  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp: suggest a name for the project file.
+
+2007-06-19  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcut.cpp: show filenames in caption.
+
+2007-06-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/defines.h: include *.rec in DEFAULT_LOADFILTER.
+
+2007-06-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/dvbcutbase.ui: add accelerators for st(A)rt, e(N)d,
+	  (C)hapter and (B)ookmark.
+
+	* src/defines.h: include *.vdr and *.tts in DEFAULT_LOADFILTER.
+
+2007-06-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Windows build script & README update by Ralph Glasstetter.
+
+2007-06-03  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/mpegmuxer.cpp: fix size calculation.
+
+2007-05-30  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/streamdata.cpp: add missing #include <assert.h>
+
+2007-05-29  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* audio_addpts() patch by Wolfram Gloger.
+
+	* Code cleanup + beautification by myself.
+
+	* src/index.cpp: remove false "missing frame" alarms.
+
+2007-05-27  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Add batch mode. You can now call "dvbcut -batch <project>.prj"
+	  and dvbcut will export the file in your preferred format
+	  (default is DVB format using the dvbcut muxer). Note that the
+	  project file is essential because it contains the cut list.
+	  The name of the output file will be "<project>.mpg". If
+	  that file already exists, dvbcut adds numeric suffixes
+	  (e.g. "<project>_1.mpg") until the name is unique.
+
+2007-05-13  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* lavfmuxer.cpp: include patch from Wolfram Gloger.
+
+	* When using the mouse wheel, limit position to [0...pictures-1].
+
+2007-05-09  Sven Over  <svenover@svenover.de>
+
+	* Added generic dvbcut_exception class.
+
+	* Got rid of libavcodec usage in playaudio.cpp. Instead, libmad and
+	liba52 are now used. SCons files changed accordingly.
+
+2007-05-06  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Remember last used export format.
+
+2007-05-03  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* src/mpgfile.cpp: print estimated data rate.
+
+	* src/index.cpp: changed additional error messages.
+
+2007-04-29  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Changed export accelerator to 'E'.
+
+2007-04-13  Sven Over  <svenover@svenover.de>
+
+	* Released version 0.5.4.
+
+2007-03-06  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Report missing frames in GOP while indexing.
+
+2007-02-12  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Write proper GOP time_code values when exporting.
+
+2007-01-30  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Added workaround for div/0 bug in ffmpeg.
+
+	* Added missing ChangeLog entry. :-)
+
+2007-01-28  Sven Over  <svenover@svenover.de>
+
+	* Applied patch for SConstruct file by Ingo Saitz, as forwarded to me
+	by Christian Marillat.
+
+	* Fixed 2 compiler warnings in mpegmuxer.cpp.
+
+	* Christian Marillat reported build problems on alpha, where the
+	__bswap_constant_xx macros seem not to be available. Changed defines
+	in defines.h not to use them anymore.
+
+2007-01-26  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Integrated Windows port by Olivier Raoul.
+
+	* Added XML generation feature by Ralph Glasstetter.
+
+2006-09-24  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Moved global settings to a separate class.
+
+	* Changed jog_offset to type double. The default is now 0.4.
+
+	* Updated ChangeLog ;-)
+
+	* Added configurable jog slider patch from Ralph Glasstetter.
+
+2006-09-23  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Added more configuration settings.
+
+2006-09-22  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Made mouse wheel resolution configurable.
+
+2006-09-21  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Added selectable resolutions for the mouse wheel (via
+	modifier keys).
+
+2006-09-18  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Fixed yesterday's patch. The messages should be gone now.
+
+2006-09-17  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Modified the indexer to suppress most "inconsistent video
+	PTS (-1696)" message.
+
+2006-09-05  Michael Riepe  <too-tired@users.sourceforge.net>
+
+	* Added all existing bug fixes from http://www.mr511.de/dvbcut.
+
+2005-12-16  Sven Over  <svenover@svenover.de>
+
+	* Release 0.5.3.
+
+2005-12-15  Sven Over  <svenover@svenover.de>
+
+	* Important bug fixes in the DVBCUT muxer.
+
+	* Fixed a bug in the audio player function, which caused no audio to
+	be played in certain situations.
+
+	* Fixed a bug in saving the index file, which caused an "Invalid index
+	file" error when loading the index.
+
+	* New items in the "View" menu: "Full size", "Half size" and "Quarter
+	Size". Also added a "-geometry" option with the correct display size
+	to the command line when spawning the embedded MPlayer.
+
+	* The DVBCUT muxer is now available in two variants: apart from the
+	one which creates DVD compliant (well, hopefully) program streams,
+	there is now also one for plain program streams. The latter has no
+	fixed pack size (DVD demands 2048 bytes fixed pack size), and no
+	special placeholder packs for DVD navigation data. (Tech note: audio
+	buffers are as big as 49152 bytes, as opposed to 4096 in the DVBCUT
+	DVD muxer. This is to circumvent problems because of the very big
+	video stream packs.) It creates files that are a few percent smaller
+	than the DVD muxer, as muxing overhead is considerably smaller.
+
+2005-12-11  Sven Over  <svenover@svenover.de>
+
+	* Release 0.5.2.
+
+	* Replaced the menu items for exporting MPEG program stream and MPEG
+	transport stream by one item "Export video". When selected, a new
+	dialog window appears, in which you can choose the output format.
+	Apart from the libavformat-based program stream and transport stream
+	output formats, now also a DVBCUT muxer is available which writes
+	DVD compliant program streams. The muxer is still subject to testing.
+
+	* The "Play" menu now has a submenu "Audio track", in which the user
+	can choose which audio track to play when clicking on "Play audio"
+	or when starting the embedded MPlayer.
+
+	* AC3 support added. Both the transport and the program stream reader
+	can read AC3 streams (tested with DVB and DVD material, respectively).
+	AC3 gets decoded for the "Play Audio" menu items. Writing AC3 has been
+	tested with the libavformat PS and TS muxers as well as with the new
+	DVBCUT muxer.
+
+	* Implemented mmapped reading of input files.
+
+	* Added "Recent files..." submenu to the "File" menu. The information
+	is saved by means of the Qt QSettings mechanism, in a file
+	"~/.qt/dvbcut.sf.netrc".
+
+2005-11-27  Sven Over  <svenover@svenover.de>
+
+	* Release 0.5.1.
+
+	* Numerous small fixes.
+
+	* While indexing an input file, show a progress bar and a cancel
+	button in the status bar of the DVBCUT window.
+
+	* Show busy mouse cursor while decoding video and while loading or
+	indexing video.
+  
+	* Incorporated the sources of the FFMPEG libraries (libavcodec,
+	libavformat, libavutil) into the DVBCUT source directory. This will
+	ease the install procedure significantly for those who do not have
+	these libraries installed or have installed an incompatible version.
+
+	* Introduced SCons as build utility. A Makefile is also provided,
+	which calls SCons.
+
+2005-11-21  Sven Over  <svenover@svenover.de>
+
+	* First public release.
+

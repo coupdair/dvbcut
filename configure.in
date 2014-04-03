@@ -1,0 +1,203 @@
+# configure.in - Configure template for dvbcut.
+# Process this file with autoconf to produce a configure script.
+# Copyright (C) 2007 - 2009 Michael Riepe
+
+#@(#) $Id$
+
+AC_INIT(src/dvbcut.cpp)
+
+AC_PREREQ(2.13)
+
+AC_CANONICAL_SYSTEM
+
+CONFIGURE_ARGS="$ac_configure_args"
+AC_SUBST(CONFIGURE_ARGS)
+
+dnl Checks for programs.
+AC_PROG_MAKE_SET
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_INSTALL
+AC_CHECK_TOOL(STRIP, strip, :)
+AC_CHECK_TOOL(PKG_CONFIG, pkg-config, :)
+
+AC_CYGWIN
+AC_MINGW32
+AC_EXEEXT
+AC_OBJEXT
+
+if test "$MINGW32" = yes; then
+  CPPFLAGS="$CPPFLAGS -I/usr/local/include"
+  LDFLAGS="$LDFLAGS -L/usr/local/lib"
+fi
+
+dnl check for library dir
+mr_libdirname=lib
+set -- `LC_ALL=C $CC -print-search-dirs | sed -n -e 's,^libraries: ,,p' | sed -e 's,^=,,' | sed -e 's,:, ,'g`
+for ac_dir; do
+  case `cd $ac_dir 2>/dev/null && pwd` in
+    */lib32 | */lib32/) mr_libdirname=lib32; break;;
+    */lib64 | */lib64/) mr_libdirname=lib64; break;;
+  esac
+done
+
+ffmpeg_prefix=`pwd`/ffmpeg
+ffmpeg_lib=$ffmpeg_prefix/lib	# internally, use lib regardless of architecture
+ffmpeg_internal=ffmpeg_internal
+AC_ARG_WITH(ffmpeg,
+  [  --with-ffmpeg=DIR       use installed ffmpeg in DIR],
+  [case $withval in
+    no)
+      ;;
+    ''|yes)
+      AC_MSG_ERROR([You MUST specify a directory for ffmpeg.])
+      ;;
+    *)
+      ffmpeg_prefix=$withval
+      ffmpeg_lib=$ffmpeg_prefix/$mr_libdirname
+      ffmpeg_internal=
+      ;;
+  esac])
+AC_SUBST(ffmpeg_prefix)
+AC_SUBST(ffmpeg_internal)
+
+ffmpeg_include=$ffmpeg_prefix/include
+
+AC_ARG_WITH(ffmpeg-include,
+  [  --with-ffmpeg-include=DIR   set ffmpeg include directory],
+  [case $withval in
+    ''|yes|no) AC_MSG_ERROR([You MUST specify a directory for ffmpeg-include.]);;
+    *) ffmpeg_include=$withval;;
+  esac])
+AC_ARG_WITH(ffmpeg-lib,
+  [  --with-ffmpeg-lib=DIR   set ffmpeg library directory],
+  [case $withval in
+    ''|yes|no) AC_MSG_ERROR([You MUST specify a directory for ffmpeg-lib.]);;
+    *) ffmpeg_lib=$withval;;
+  esac])
+
+LDFLAGS="-L$ffmpeg_lib $LDFLAGS"
+
+dnl Checks for libraries.
+
+FFMPEG_LIBS='-lavformat -lavcodec -lavutil'
+AC_SUBST(FFMPEG_LIBS)
+
+if test x$ffmpeg_internal != xffmpeg_internal; then
+  AC_CHECK_LIB(swscale, main,
+    [AC_DEFINE(HAVE_LIB_SWSCALE, 1, [Define this if you have libswscale.])
+    FFMPEG_LIBS="$FFMPEG_LIBS -lswscale"])
+fi
+
+AC_CHECK_LIB(mad, mad_decoder_init,
+  [AC_DEFINE(HAVE_LIB_MAD, 1, [Define this if you have libmad.])
+  LIBS="$LIBS -lmad"],
+  [AC_MSG_WARN([Did not find mad library])])
+AC_CHECK_LIB(a52, a52_init,
+  [AC_DEFINE(HAVE_LIB_A52, 1, [Define this if you have liba52.])
+  LIBS="$LIBS -la52 -lm"],
+  [AC_MSG_ERROR([Did not find required a52 library])],
+  [-lm])
+
+mr_other_libs=
+if test "$MINGW32" = yes; then
+  mr_other_libs=-lwinmm
+fi
+
+AC_CHECK_LIB(ao, ao_initialize,
+  [AC_DEFINE(HAVE_LIB_AO, 1, [Define this if you have libao.])
+  LIBS="$LIBS -lao $mr_other_libs"],
+  [AC_MSG_WARN([Did not find libao - dvbcut will not play audio])],
+  [$mr_other_libs])
+
+STDLIB=
+AC_SUBST(STDLIB)
+
+if test "$MINGW32" = yes; then
+  CPPFLAGS="-I\$(top_srcdir)/import $CPPFLAGS"
+  STDLIB='$(top_srcdir)/import/stdlib.cpp'
+fi
+
+dnl AC_CHECK_LIB(m, sqrt, [LIBS="$LIBS -lm"])
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(ao/ao.h mad.h stdint.h a52dec/a52.h)
+
+CPPFLAGS="$CPPFLAGS -I$ffmpeg_include"
+
+if test -f $ffmpeg_include/libavcodec/avcodec.h; then
+  # newer ffmpeg versions
+  CPPFLAGS="$CPPFLAGS -I$ffmpeg_include/libavcodec"
+  CPPFLAGS="$CPPFLAGS -I$ffmpeg_include/libavformat"
+  CPPFLAGS="$CPPFLAGS -I$ffmpeg_include/libswscale"
+else
+  # older ffmpeg versions
+  CPPFLAGS="$CPPFLAGS -I$ffmpeg_include/ffmpeg"
+fi
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_TYPE_OFF_T
+AC_TYPE_SIZE_T
+
+dnl Checks for library functions.
+AC_FUNC_MMAP
+
+dnl external stuff
+AC_ARG_WITH(qt4, [  --with-qt4=DIR          path to qt4 (default: QTDIR)],
+  [case $withval in
+    no) AC_MSG_ERROR([dvbcut requires Qt4]);;
+    yes) ;;
+    *) QTDIR=$withval;;
+  esac])
+AC_SUBST(QTDIR)
+QTINC=$QTDIR/include
+QTLIB=$QTDIR/$mr_libdirname
+AC_ARG_WITH(qt4-include, [  --with-qt4-include=DIR  path to qt4 include files],
+  [case $withval in
+    yes|no) ;;
+    *) QTINC=$withval;;
+  esac])
+AC_ARG_WITH(qt4-lib, [  --with-qt4-lib=DIR      path to qt4 libraries],
+  [case $withval in
+    yes|no) ;;
+    *) QTLIB=$withval;;
+  esac])
+
+CPPFLAGS="$CPPFLAGS -I$QTINC"
+LDFLAGS="$LDFLAGS -L$QTLIB"
+
+AC_CHECK_LIB(QtCore, main,
+  [HAVE_QT4="yes"],
+  [AC_MSG_ERROR([QtCore library not found])])
+
+AC_CHECK_LIB(Qt3Support, main,
+  [HAVE_QT4="yes"],
+  [AC_MSG_ERROR([Qt3Support library not found])])
+
+AC_CHECK_LIB(QtGui, main,
+  [HAVE_QT4="yes"],
+  [AC_MSG_ERROR([QtGui library not found])])
+
+AC_CHECK_LIB(QtXml, main,
+  [HAVE_QT4="yes"],
+  [AC_MSG_ERROR([QtXml library not found])])
+
+if test "x$HAVE_QT4" = "xyes"; then 
+   QT_CXXFLAGS=`$PKG_CONFIG --cflags Qt3Support QtCore QtGui QtXml`
+   QT_LIBS=`$PKG_CONFIG --libs Qt3Support QtCore QtGui QtXml`
+   CPPFLAGS="$CPPFLAGS $QT_CXXFLAGS"
+   LIBS="$LIBS $QT_LIBS"
+else
+   AC_MSG_ERROR([cannot find Qt4 library >= 4.2])
+fi
+
+AC_DEFINE(__STDC_LIMIT_MACROS, 1, [Required for C++])
+AC_DEFINE(__STDC_CONSTANT_MACROS, 1, [Required for C++])
+AC_DEFINE(_FILE_OFFSET_BITS, 64, [We are always using large files])
+dnl AC_DEFINE(_LARGEFILE_SOURCE)
+
+AC_OUTPUT([makefile src/Makefile dvbcut.desktop])
+
+# vi: set ts=8 sw=2 :
